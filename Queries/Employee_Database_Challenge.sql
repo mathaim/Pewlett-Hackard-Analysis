@@ -41,6 +41,24 @@ FROM unique_titles
 GROUP BY title
 ORDER BY COUNT DESC;
 
+----------------------------------------------
+
+--- Extra table - salaries that don't have to be paid
+SELECT ut.emp_no,
+s.salary
+INTO retiring_salaries
+FROM unique_titles as ut
+LEFT JOIN salaries as s
+ON(ut.emp_no = s.emp_no)
+
+SELECT SUM (salary)
+INTO money_saved
+FROM retiring_salaries 
+ORDER BY SUM DESC;
+
+------------------------------------------------------
+
+
 
 
 -- 4. Mentorship Eligibility --
@@ -61,26 +79,13 @@ ON(de.emp_no = t.emp_no)
 WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 AND (de.to_date = '9999-01-01')
 ORDER BY emp_no;
-
-SELECT DISTINCT ON (emp_no)
-me.emp_no,
-me.first_name,
-me.last_name,
-me.title,
-de.dept_no,
-d.dept_name
-INTO mentorship_departments
-FROM mentorship_eligibility as me
-LEFT JOIN dept_emp as de
-ON(me.emp_no = de.emp_no)
-LEFT JOIN departments as d
-ON(de.dept_no = d.dept_no)
-ORDER BY emp_no;
-
-SELECT COUNT (emp_no), dept_name
-INTO mentorship_departments_counts
+-----------------------------------------------
+--Extra table -- Counts of mentors by dept
+SELECT COUNT (emp_no), dept_name, 
+INTO mentorship_departments_counts_title
 FROM mentorship_departments 
 GROUP BY dept_name
 ORDER BY COUNT DESC;
+
 
 
