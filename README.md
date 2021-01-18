@@ -25,6 +25,12 @@ In order to determine mentorship eligibility we had to combine data from 3 datas
 
 ### Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
 
+
 There are 1,549 retirement-ready employees qualified for the mentorship. Of those, 417 are in the Development department, 356 are in the Production Department, and 247 are in Sales. Departments like Finance and Quality Management may need more mentors.
 
 ![ERD](Images/mentorshipdepartmentcounts.png)
+
+
+With these retirees, Pewlett Hackard will save an annual total amount of $4,782,884,264. Now, the company determine not only which positions need filling but also how many new hires they can afford.
+
+![](Images/money.png)
