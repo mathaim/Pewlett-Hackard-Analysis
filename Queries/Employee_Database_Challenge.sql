@@ -15,6 +15,8 @@ ON(e.emp_no = t.emp_no)
 WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 ORDER BY e.emp_no, e.birth_date DESC;
 
+SELECT * FROM retirement_titles
+
 -- 2. Making unique_titles.csv --
 DROP TABLE unique_titles
 
@@ -59,3 +61,26 @@ ON(de.emp_no = t.emp_no)
 WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 AND (de.to_date = '9999-01-01')
 ORDER BY emp_no;
+
+SELECT DISTINCT ON (emp_no)
+me.emp_no,
+me.first_name,
+me.last_name,
+me.title,
+de.dept_no,
+d.dept_name
+INTO mentorship_departments
+FROM mentorship_eligibility as me
+LEFT JOIN dept_emp as de
+ON(me.emp_no = de.emp_no)
+LEFT JOIN departments as d
+ON(de.dept_no = d.dept_no)
+ORDER BY emp_no;
+
+SELECT COUNT (emp_no), dept_name
+INTO mentorship_departments_counts
+FROM mentorship_departments 
+GROUP BY dept_name
+ORDER BY COUNT DESC;
+
+
