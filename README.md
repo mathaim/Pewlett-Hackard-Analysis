@@ -1,5 +1,5 @@
 # Pewlett-Hackard-Analysis
-using SQL to explore employee database
+using PostgreSQL to explore employee database
 
 ## 1. Overview
 In this analysis, we are using PostgreSQL to better understand the employee demographic of Pewlett Hackard. Specifically, we want to determine the number of retiring employees per title, so that we can gauge the size of the "silver tsunami" and the company can reflect this in hiring needs and will be adequately prepared. Additionally, we want to identify the employees who are eligible to participate in the mentorship program. Here is an ERD of the preliminary datasets we were working with.
